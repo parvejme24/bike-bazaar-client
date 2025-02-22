@@ -15,6 +15,7 @@ const ManageUsers = lazy(() => import("./pages/dashboard/ManageUsers"));
 const ManageProducts = lazy(() => import("./pages/dashboard/ManageProducts"));
 const AllOrders = lazy(() => import("./pages/dashboard/AllOrders"));
 const NotFound = lazy(() => import("./pages/NotFound"));
+const Contact = lazy(() => import("./pages/Contact"));
 
 const Login = lazy(() => import("./pages/Login"));
 const Register = lazy(() => import("./pages/Register"));
@@ -36,6 +37,7 @@ export default function App() {
             <Route path="products" element={<Products />} />
             <Route path="cart" element={<Cart />} />
             <Route path="payment" element={<Payment />} />
+            <Route path="contact" element={<Contact />} />
           </Route>
 
           {/* login and register page  */}
