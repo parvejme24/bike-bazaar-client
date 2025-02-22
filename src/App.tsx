@@ -16,6 +16,7 @@ const ManageProducts = lazy(() => import("./pages/dashboard/ManageProducts"));
 const AllOrders = lazy(() => import("./pages/dashboard/AllOrders"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const Contact = lazy(() => import("./pages/Contact"));
+const About = lazy(() => import("./pages/About"));
 const FAQ = lazy(() => import("./pages/Faq"));
 
 const Login = lazy(() => import("./pages/Login"));
@@ -39,6 +40,7 @@ export default function App() {
             <Route path="cart" element={<Cart />} />
             <Route path="payment" element={<Payment />} />
             <Route path="contact" element={<Contact />} />
+            <Route path="about" element={<About />} />
             <Route path="faq" element={<FAQ />} />
           </Route>
 
