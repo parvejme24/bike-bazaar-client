@@ -1,126 +1,71 @@
 import { useState } from "react";
-import { NavLink, Outlet } from "react-router-dom";
-import { Drawer, Button } from "antd";
-import { RxHamburgerMenu } from "react-icons/rx";
+import { NavLink, Outlet, useLocation } from "react-router-dom";
+import { Button, Menu } from "antd";
+import {
+  MenuUnfoldOutlined,
+  MenuFoldOutlined,
+  PieChartOutlined,
+  UserOutlined,
+  ShoppingOutlined,
+  FileTextOutlined,
+} from "@ant-design/icons";
 
 export default function DashboardLayout() {
-  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [collapsed, setCollapsed] = useState(false);
+  const location = useLocation();
 
-  const toggleDrawer = () => {
-    setDrawerOpen(!drawerOpen);
-  };
+  // Get the current active path
+  const activeKey = location.pathname.split("/")[2] || "";
+
+  // Sidebar toggle function
+  const toggleCollapsed = () => setCollapsed(!collapsed);
+
+  // Dashboard menu items
+  const menuItems = [
+    { key: "", icon: <PieChartOutlined />, label: "Dashboard" },
+    { key: "my-profile", icon: <UserOutlined />, label: "My Profile" },
+    { key: "manage-users", icon: <UserOutlined />, label: "Manage Users" },
+    { key: "manage-products", icon: <ShoppingOutlined />, label: "Manage Products" },
+    { key: "all-orders", icon: <FileTextOutlined />, label: "All Orders" },
+  ];
 
   return (
     <div className="flex h-screen">
-      {/* Sidebar for Large Screens */}
-      <aside className="w-64 bg-gray-900 text-white p-5 hidden md:block">
-        <h2 className="text-xl font-bold mb-6">Dashboard</h2>
-        <nav className="flex flex-col gap-3">
-          <NavLink
-            to="/dashboard"
-            className={({ isActive }) =>
-              `p-2 rounded ${isActive ? "bg-gray-700" : "hover:bg-gray-800"}`
-            }
-          >
-            Dashboard
-          </NavLink>
-          <NavLink
-            to="/dashboard/my-profile"
-            className={({ isActive }) =>
-              `p-2 rounded ${isActive ? "bg-gray-700" : "hover:bg-gray-800"}`
-            }
-          >
-            My Profile
-          </NavLink>
-          <NavLink
-            to="/dashboard/manage-users"
-            className={({ isActive }) =>
-              `p-2 rounded ${isActive ? "bg-gray-700" : "hover:bg-gray-800"}`
-            }
-          >
-            Manage Users
-          </NavLink>
-          <NavLink
-            to="/dashboard/manage-products"
-            className={({ isActive }) =>
-              `p-2 rounded ${isActive ? "bg-gray-700" : "hover:bg-gray-800"}`
-            }
-          >
-            Manage Products
-          </NavLink>
-          <NavLink
-            to="/dashboard/all-orders"
-            className={({ isActive }) =>
-              `p-2 rounded ${isActive ? "bg-gray-700" : "hover:bg-gray-800"}`
-            }
-          >
-            All Orders
-          </NavLink>
-        </nav>
-      </aside>
-
-      {/* Hamburger Icon for Small & Medium Screens */}
-      <div className="md:hidden p-4">
-        <Button type="text" onClick={toggleDrawer}>
-          <RxHamburgerMenu className="text-3xl font-bold" />
-        </Button>
-      </div>
-
-      {/* Drawer for Small & Medium Screens */}
-      <Drawer
-        title="Dashboard Menu"
-        placement="left"
-        onClose={toggleDrawer}
-        open={drawerOpen}
+      {/* Sidebar */}
+      <aside
+        className={`bg-gray-900 text-white absolute md:relative transition-all duration-300 ${
+          collapsed ? "w-20" : "w-64"
+        }`}
       >
-        <nav className="flex flex-col gap-3">
-          <NavLink
-            to="/dashboard"
-            className={({ isActive }) =>
-              `p-2 rounded ${isActive ? "bg-gray-300" : "hover:bg-gray-200"}`
-            }
-            onClick={toggleDrawer}
-          >
-            Dashboard
-          </NavLink>
-          <NavLink
-            to="/dashboard/my-profile"
-            className={({ isActive }) =>
-              `p-2 rounded ${isActive ? "bg-gray-300" : "hover:bg-gray-200"}`
-            }
-            onClick={toggleDrawer}
-          >
-            My Profile
-          </NavLink>
-          <NavLink
-            to="/dashboard/manage-users"
-            className={({ isActive }) =>
-              `p-2 rounded ${isActive ? "bg-gray-300" : "hover:bg-gray-200"}`
-            }
-            onClick={toggleDrawer}
-          >
-            Manage Users
-          </NavLink>
-          <NavLink
-            to="/dashboard/manage-products"
-            className={({ isActive }) =>
-              `p-2 rounded ${isActive ? "bg-gray-300" : "hover:bg-gray-200"}`
-            }
-            onClick={toggleDrawer}
-          >
-            Manage Products
-          </NavLink>
-          <NavLink
-            to="/dashboard/all-orders"
-            className={({ isActive }) =>
-              `p-2 rounded ${isActive ? "bg-gray-300" : "hover:bg-gray-200"}`
-            }
-            onClick={toggleDrawer}
-          >
-            All Orders
-          </NavLink>
-        </nav>
-      </Drawer>
+        {/* Sidebar Toggle Button */}
+        <div className="flex justify-end p-4">
+          <Button type="primary" onClick={toggleCollapsed}>
+            {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+          </Button>
+        </div>
+
+        {/* Sidebar Menu */}
+        <Menu
+          className="h-screen"
+          theme="dark"
+          mode="inline"
+          inlineCollapsed={collapsed}
+          selectedKeys={[activeKey]}
+        >
+          {menuItems.map(({ key, icon, label }) => (
+            <Menu.Item key={key} icon={icon}>
+              <NavLink
+                to={`/dashboard/${key}`}
+                className={({ isActive }) =>
+                  isActive ? "text-blue-500" : "text-white"
+                }
+              >
+                {label}
+              </NavLink>
+            </Menu.Item>
+          ))}
+        </Menu>
+      </aside>
 
       {/* Main Content */}
       <main className="flex-1 p-6 bg-gray-100">
