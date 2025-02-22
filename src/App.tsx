@@ -16,6 +16,9 @@ const ManageProducts = lazy(() => import("./pages/dashboard/ManageProducts"));
 const AllOrders = lazy(() => import("./pages/dashboard/AllOrders"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
+const Login = lazy(() => import("./pages/Login"));
+const Register = lazy(() => import("./pages/Register"));
+
 export default function App() {
   return (
     <Router>
@@ -34,6 +37,10 @@ export default function App() {
             <Route path="cart" element={<Cart />} />
             <Route path="payment" element={<Payment />} />
           </Route>
+
+          {/* login and register page  */}
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
 
           {/* Dashboard Routes */}
           <Route path="/dashboard" element={<DashboardLayout />}>
