@@ -18,6 +18,8 @@ const Login = lazy(() => import("./pages/Login"));
 const Register = lazy(() => import("./pages/Register"));
 const AllProducts = lazy(() => import("./pages/AllProducts"));
 const ProductDetails = lazy(() => import("./pages/ProductDetails"));
+const About = lazy(() => import("./pages/About"));
+const Contact = lazy(() => import("./pages/Contact"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 // Private - User Dashboard Pages
@@ -69,6 +71,8 @@ export default function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/products" element={<AllProducts />} />
           <Route path="/products/:id" element={<ProductDetails />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
         </Route>
 
