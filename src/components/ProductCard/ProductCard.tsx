@@ -11,12 +11,14 @@ export default function ProductCard({ product }: { product: Product }) {
   const { name, image, model, brand, category, description } = product;
 
   return (
-    <div className="rounded-lg border border-gray-300">
+    <div className="rounded-lg border border-gray-200 bg-gray-50">
       <img className="w-full h-64 object-cover" src={image} alt={name} />
-      <div className="p-5 bg-white">
+      <div className="p-5 ">
         <h3 className="text-xl font-semibold text-gray-800 truncate">{name}</h3>
-        <p className="text-sm text-gray-500 mt-1">{model}</p>
-        <p className="text-sm text-gray-600 mt-1">{brand}</p>
+        <div className="flex justify-between items-center">
+          <p className="text-sm text-gray-500 mt-1">Model: {model}</p>
+          <p className="text-sm text-gray-600 mt-1">Brand: {brand}</p>
+        </div>
         <p className="text-sm text-gray-400 mt-1">{category}</p>
         <p className="text-gray-700 mt-3">{description}</p>
         <div className="mt-4 flex justify-between items-center">

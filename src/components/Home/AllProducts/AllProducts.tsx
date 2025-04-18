@@ -195,8 +195,9 @@ export default function AllProducts() {
   ];
 
   return (
-    <div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+    <div className="pt-16">
+      <h2 className="text-2xl font-bold">Our Products</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-5">
         {products.map((product) => (
           <ProductCard product={product} />
         ))}
