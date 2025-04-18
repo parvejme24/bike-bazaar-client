@@ -3,7 +3,7 @@ import { Suspense, lazy } from "react";
 
 // Layouts
 import DefaultLayout from "./layouts/DefaultLayout.tsx";
-import DashboardLayout from "./layouts/DashboardLayout";
+import DashboardLayout from "./layouts/DashboardLayout/DashboardLayout.tsx";
 
 // Loader Component
 const Loader = () => (

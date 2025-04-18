@@ -1,6 +1,7 @@
 import AllProducts from "../components/Home/AllProducts/AllProducts";
 import Banner from "../components/Home/Banner/Banner";
 import BrandPartners from "../components/Home/BrandPartners/BrandPartners";
+import CallToAction from "../components/Home/CallToAction/CallToAction";
 import Categories from "../components/Home/Categories/Categories";
 import FeaturedProducts from "../components/Home/FeaturedProducts/FeaturedProducts";
 import SpecialOffers from "../components/Home/SpecialOffers/SpecialOffers";
@@ -16,6 +17,7 @@ export default function Home() {
       <SpecialOffers />
       <WhyChooseUs />
       <BrandPartners />
+      <CallToAction />
     </div>
   );
 }
