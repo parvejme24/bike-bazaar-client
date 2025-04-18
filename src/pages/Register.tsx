@@ -29,7 +29,7 @@ export default function Register() {
           <h2 className="text-center text-3xl font-bold text-gray-800 mb-4">
             Register Now
           </h2>
-          <form onSubmit={handleRegister} className="space-y-4 mt-4">
+          <form onSubmit={handleRegister} className="space-y-4 mt-6">
             {/* Full Name */}
             <fieldset className="max-w-md space-y-1">
               <Label htmlFor="name">Enter Name</Label>

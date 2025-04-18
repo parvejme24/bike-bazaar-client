@@ -38,7 +38,7 @@ const Navbar = () => {
         {/* Login Button */}
         <Link
           to="/login"
-          className="hidden md:inline-block bg-[#FFD700] text-[#1E2A38] px-4 py-1 rounded-md font-semibold hover:bg-[#E6C200] transition"
+          className="hidden md:inline-block bg-[#FFD700] text-[#1E2A38] px-4 py-2 rounded-md font-semibold hover:bg-[#E6C200] transition"
         >
           Login
         </Link>
@@ -46,7 +46,7 @@ const Navbar = () => {
         {/* Mobile Menu Toggle */}
         <button
           onClick={() => setOpen(!open)}
-          className="md:hidden text-xl focus:outline-none"
+          className="md:hidden text-xl focus:outline-none py-2"
         >
           {open ? <FaTimes /> : <FaBars />}
         </button>

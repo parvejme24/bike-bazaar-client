@@ -26,7 +26,7 @@ export default function Login() {
     <div className="bg-[#F8F9FA]">
       <div className="container mx-auto max-w-7xl flex justify-center items-center min-h-screen px-4">
         <div className="w-[500px] max-w-[500px] mx-auto p-10 border rounded-xl bg-white shadow">
-          <h2 className="text-center text-3xl font-bold text-gray-800 mb-4">
+          <h2 className="text-center text-3xl font-bold text-gray-800 mb-8">
             Login Now
           </h2>
           <form onSubmit={handleRegister} className="space-y-4 mt-4">
